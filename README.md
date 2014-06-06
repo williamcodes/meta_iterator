@@ -20,5 +20,16 @@ The #has_next? method returns true if the currently selected iterator has a next
 
 Note this method has a helpful side-effect. If the currently selected iterator in the array has no next element, the method will actually move the index forward until it finds an iterator that does.
 
+###Test Suite
+In order to use this repo, all you need is a copy of Ruby. This language comes by default on most computers. However, if you would like to run the test suite, you will also need to install the rspec gem. Installing it is easy. 
+
+**Step 1:** If you are using Ruby 1.8 and below, you will need to first install ruby gems here: [http://rubygems.org/pages/download](http://rubygems.org/pages/download). On Ruby 1.9 and above, skip this step. 
+
+**Step 2:** Type the following in your terminal: 
+
+```
+$ gem install rspec
+```
+
 ###Note
 Because the iterator class does not exist in Ruby, I have implemented one here to support the meta iterator class. Due to its simplicity, I will not discuss it in depth, however it mimics the iterator class in Java.
