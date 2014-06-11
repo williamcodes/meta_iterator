@@ -1,8 +1,8 @@
 class MetaIterator
   def initialize(it_arr)
     @it_arr = it_arr
+    @exhausted = []
     @index = 0
-    @counter = 0
     @size = it_arr.count
   end
 
@@ -15,14 +15,12 @@ class MetaIterator
   end
 
   def has_next?
-    if @it_arr[@index].has_next?
-      @counter = 0
-      return true
-    else
-      return false if @counter == @size
-      @counter += 1
-      @index = (@index + 1) % @size
-      self.has_next?
-    end    
+    return false if @it_arr.count == 0
+    return true if @it_arr[@index].has_next?
+      
+    @exhausted << @it_arr.delete_at(@index)
+    @size -= 1
+    @index = @index % @size unless @size == 0
+    self.has_next?
   end  
 end
