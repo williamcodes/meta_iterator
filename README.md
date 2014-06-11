@@ -5,7 +5,11 @@ This repo is an experiment to show how to implement a meta iterator in Ruby. Not
 ###Explanation
 Assume we have an iterator of users, an iterator of stores, and an iterator of items. We could easily iterate through each one in order, but then we would have three distinct chunks. What if we wanted them mixed, so that users, stores, and items would appear side by side? What if each iterator had a totally different size?
 
-This is the use case for a meta iterator. A meta iterator accepts an array of other iterators. It then loops through this array, calling #next on each element until all are exhausted. Note that in some languages, we might use a linked list for this so that we can more easily remove exhausted elements. However, in Ruby, the Array class works like a linked list and is the default choice when one needs linked list behavior.
+This is the use case for a meta iterator. A meta iterator accepts an array of other iterators. It then loops through this array, calling #next on each element until all are exhausted. 
+
+Note that we could use a linked list for this so that we can more easily remove exhausted elements. However, in Ruby, there is no Linked List class. Instead, the Array class comes with all the behavior of a linked list like shifting or removing a node from the middle. 
+
+We could easily implement our own Linked List class, which would make the algorithm more efficient when there are many quickly exhausted iterators in the beginning of the array. The downside of this is that it takes up more memory because linked lists contain data about the location of their nodes, whereas arrays do not.
 
 ###Discussion
 
